@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/profile_settings.css">
+    <script src="https://kit.fontawesome.com/aaf816bed9.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zain:ital,wght@0,200;0,300;0,400;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
+    <title>Profile Settings</title>
+</head>
+<body>
+
+    <div id="page">
+
+        <header id="top-nav" role="banner" aria-label="Main navigation" :class="{ darkmode: isDarkMode }"> <!-- applied to all pages -->
+            <div id="logo" @click="redirect('home')">
+                <img src="/images/logo.png" alt="One Track Mind Logo">
+                <h1 class="zain-bold">One Track Mind</h1>
+            </div>
+            <nav id="about" @click="redirect('about')" aria-label="About Page Link">
+                <h2 class="zain-bold">About</h2>
+            </nav>
+        </header>
+
+        <main id="content" :class="{ darkmode: isDarkMode }">
+
+            <section id="edit_profile" aria-label="Edit Profile Section">
+                <h2 class="zain-bold" :class="{ darkmode: isDarkMode }">Edit Profile</h2>
+
+                <form id="edit_container">
+
+                    <div id="edit_nickname" :class="{ darkmode: isDarkMode }">
+                        <label for="nickname" class="zain-bold">Nickname:</label>
+                        <input type="text" id="nickname" class="zain-regular" :class="{ darkmode: isDarkMode }" v-model="nickname">
+                    </div>
+
+                    <div id="edit_age" :class="{ darkmode: isDarkMode }">
+                        <label for="age" class="zain-bold">Age:</label>
+                        <input type="number" id="age" min="0" class="zain-regular" :class="{ darkmode: isDarkMode }" v-model="age">
+                    </div>
+
+                    <div id="edit_sex" :class="{ darkmode: isDarkMode }">
+                        <label for="sex" class="zain-bold">Sex:</label>
+                        <select id="sex" class="zain-regular" :class="{ darkmode: isDarkMode }" v-model="sex">
+                            <option value="woman" class="zain-regular" selected>Woman</option>
+                            <option value="man" class="zain-regular">Man</option>
+                        </select>
+                    </div>
+
+                    <div id="edit_state_suburb" :class="{ darkmode: isDarkMode }">
+                        <label for="searchTextField" class="zain-bold">State & Suburb:</label>
+                        <input class="zain-regular" :class="{ darkmode: isDarkMode }" id="searchTextField" type="text" size="50" placeholder="Start typing your suburb..." autocomplete="on" runat="server" ref="autocompleteInput" v-model="cityName"/>
+                        <input type="hidden" id="city2" name="city2" v-model="cityName"/>
+                        <input type="hidden" id="cityLat" name="cityLat" v-model="cityLat"/>
+                        <input type="hidden" id="cityLng" name="cityLng" v-model="cityLng"/>
+                    </div>
+
+                    <div id="edit_pictures" aria-label="Edit your pictures">
+                        <h4 class="zain-bold" :class="{ darkmode: isDarkMode }">Your Pictures:</h4>
+                        <div id="pictures">
+                            <article class="image" v-for="(picture, index) in user_images" :key="index"> <!-- 'picture' should be an src link -->
+                                <img :src="picture" :alt="`Picture ${index}`">
+                                <i class="fa-solid fa-xmark"
+                                    @click="deleteImg(index)"
+                                    role="button"
+                                    tabindex="0"
+                                    aria-label="Delete picture"
+                                    @keydown.enter="deleteImg(index)"
+                                    @keydown.space.prevent="deleteImg(index)"
+                                ></i>
+                            </article>
+
+                            <!-- check if num_images < 4 -->
+                            <div class="add_image" :class="{ darkmode: isDarkMode }" v-if="num_images &lt; 4"
+                                @click="addImage"
+                                role="button"
+                                tabindex="0"
+                                aria-label="Add a new picture"
+                                @keydown.enter="addImage"
+                                @keydown.space.prevent="addImage"
+                            >
+                                <p class="zain-regular-italic" :class="{ darkmode: isDarkMode }">Add picture?</p>
+                                <i class="fa-solid fa-folder-plus" :class="{ darkmode: isDarkMode }"></i>
+                                <input
+                                    type="file"
+                                    accept="image/*"
+                                    ref="fileInput"
+                                    style="display: none"
+                                    @change="fileSelect"
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+
+            </section>
+
+            <section id="change_preferences" aria-label="Change Preferences Section">
+                <h2 class="zain-bold" :class="{ darkmode: isDarkMode }">Change Preferences</h2>
+
+                <form id="preferences_container">
+
+                    <div id="match_preferences" :class="{ darkmode: isDarkMode }">
+                        <label class="zain-bold" for="match">Match based on:</label>
+                        <select id="match" class="zain-regular" :class="{ darkmode: isDarkMode }" v-model="match_pref">
+                            <option value="artists" class="zain-regular" selected>Top Artists</option>
+                            <option value="tracks" class="zain-regular">Top Tracks</option>
+                        </select>
+                    </div>
+
+                    <div id="sex_preferences" :class="{ darkmode: isDarkMode }">
+                        <label class="zain-bold" for="match">Match with:</label>
+                        <select class="zain-regular" :class="{ darkmode: isDarkMode }" v-model="sex_pref">
+                            <option value="woman" class="zain-regular" selected>Women</option>
+                            <option value="man" class="zain-regular">Men</option>
+                            <option value="both" class="zain-regular">Both</option>
+                        </select>
+                    </div>
+
+                    <div id="distance_preference" :class="{ darkmode: isDarkMode }">
+                        <label class="zain-bold" for="distance">How far will you go?</label>
+                        <input type="number" min="0" step="1" id="distance" v-model.number="distance_pref">
+                        <h4 class="zain-regular">kilometres</h4>
+                    </div>
+
+                    <div id="age_preference" :class="{ darkmode: isDarkMode }">
+                        <h3 class="zain-bold">Age range:</h3>
+                        <input type="number" id="min_age" placeholder="Min" v-model="age_pref_min" >
+                        <h4 class="zain-regular">to</h4>
+                        <input type="number" id="max_age" placeholder="Max" v-model="age_pref_max">
+                    </div>
+
+                </form>
+
+                <div id="buttons">
+                    <label id="darkmodeButton" class="zain-bold switch" :class="{ darkmode: isDarkMode }" aria-label="Switch to green theme">
+                        <input type="checkbox" v-model="isDarkMode" @change="toggleDarkMode">
+                        <span class="slider">{{ isDarkMode ? 'Pink Mode' : 'Green Mode' }}</span>
+                    </label>
+                    <h3 class="zain-bold" :class="{ darkmode: isDarkMode }"
+                        id="save"
+                        @click="save"
+                        role="button"
+                        tabindex="0"
+                        aria-label="Save changes"
+                        @keydown.enter="save"
+                        @keydown.space.prevent="save"
+                    >Save Changes</h3>
+                    <h3 class="zain-bold" :class="{ darkmode: isDarkMode }"
+                        id="log_out"
+                        @click="logOut"
+                        role="button"
+                        tabindex="0"
+                        aria-label="Log out"
+                        @keydown.enter="logOut"
+                        @keydown.space.prevent="logOut"
+                    >Log Out</h3>
+                </div>
+
+            </section>
+        </main>
+
+        <nav id="bottom-nav" role="navigation" aria-label="Bottom navigation" :class="{ darkmode: isDarkMode }"> <!-- apply to all pages -->
+            <div id="chat" class="nav-tab" :class="{ active: isActive('chat'), darkmode: isDarkMode }" @click="redirect('chats')" role="link" tabindex="0" aria-label="Go to Chat">
+                <h2 class="zain-bold">Chat</h2>
+                <i class="fa-solid fa-comment" aria-hidden="true"></i>
+            </div>
+            <div id="home" class="nav-tab" :class="{ active: isActive('home'), darkmode: isDarkMode }" @click="redirect('home')" role="link" tabindex="0" aria-label="Go to Home">
+                <h2 class="zain-bold">Home</h2>
+                <i class="fa-solid fa-house" aria-hidden="true"></i>
+            </div>
+            <div id="profile" class="nav-tab" :class="{ active: isActive('profile'), darkmode: isDarkMode }" @click="redirect('profile')" role="link" tabindex="0" aria-label="Go to Profile">
+                <h2 class="zain-bold">Profile</h2>
+                <i class="fa-solid fa-user" aria-hidden="true"></i>
+            </div>
+        </nav>
+
+    </div>
+
+    <script>
+        if (localStorage.getItem('darkMode') === 'true') {
+            const page = document.getElementById('page');
+            if (page) page.classList.add('darkmode');
+        }
+    </script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=[]]=places&loading=async" async defer></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> <!-- for VUE -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> <!-- for axios -->
+    <script src="/javascripts/profile_settings.js"></script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/profile.css">
+    <script src="https://kit.fontawesome.com/aaf816bed9.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zain:ital,wght@0,200;0,300;0,400;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
+    <title>Profile</title>
+</head>
+<body>
+
+    <div id="page">
+
+        <header id="top-nav" role="banner" aria-label="Main navigation" :class="{ darkmode: isDarkMode }"> <!-- applied to all pages -->
+            <div id="logo" @click="redirect('home')">
+                <img src="/images/logo.png" alt="One Track Mind Logo">
+                <h1 class="zain-bold">One Track Mind</h1>
+            </div>
+            <nav id="about" @click="redirect('about')" aria-label="About Page Link">
+                <h2 class="zain-bold">About</h2>
+            </nav>
+        </header>
+
+        <main id="content">
+
+            <section id="user-profile" aria-label="User Profile">
+                <div id="user-info">
+                    <h3 id="nickname" class="zain-regular" :class="{ darkmode: isDarkMode }">{{ nickname }}</h3>
+                    <i
+                        class="fa-solid fa-gear"
+                        id="settings"
+                        :class="{ darkmode: isDarkMode }"
+                        @click="redirect('profile_settings')"
+                        role="button"
+                        tabindex="0"
+                        aria-label="Go to profile settings"
+                        @keydown.enter="redirect('profile_settings')"
+                        @keydown.space.prevent="redirect('profile_settings')"
+                    ></i>
+                </div>
+
+                <div
+                    id="profile-pictures"
+                    :class="{ darkmode: isDarkMode }"
+                    @click="next_img"
+                    role="button"
+                    tabindex="0"
+                    aria-label="View next profile image"
+                    @keydown.enter="next_img"
+                    @keydown.space.prevent="next_img"
+                >
+                    <img :src="user_images[current_img_num - 1]" :alt="`User profile picture ${current_img_num} of ${total_img_num}`" id="user_picture">
+                    <h4 class="zain-regular" id="image_number" :class="{ darkmode: isDarkMode }">{{ current_img_num }} / {{ total_img_num }}</h4>
+                </div>
+            </section>
+
+            <section id="user-spotify" aria-label="User Spotify Details">
+
+                <section id="top-artists" aria-label="Top Artists">
+
+                    <article id="2nd_podium" class="second podium" :class="{ darkmode: isDarkMode }" aria-label="Second top artist">
+                        <div class="image_wrap">
+                            <img :src="artist_2.image_src" alt="2nd Top Artist Image" id="2nd_top_artist_img" class="top_artist_image">
+                            <div class="position zain-bold">2</div>
+                        </div>
+                        <h4 class="zain-regular artist" id="2nd_top_artist_name">{{ artist_2.artist_name }}</h4>
+                    </article>
+
+                    <article id="1st_podium" class="first podium" :class="{ darkmode: isDarkMode }" aria-label="Top artist">
+                        <div class="image_wrap">
+                            <img :src="artist_1.image_src" alt="1st Top Artist Image" id="1st_top_artist_img" class="top_artist_image">
+                            <div class="position zain-bold">1</div>
+                        </div>
+                        <h4 class="zain-regular artist" id="1st_top_artist_name">{{ artist_1.artist_name }}</h4>
+                    </article>
+
+                    <div id="3rd_podium" class="third podium" :class="{ darkmode: isDarkMode }" aria-label="Third top artist">
+                        <div class="image_wrap">
+                            <img :src="artist_3.image_src" alt="3rd Top Artist Image" id="3rd_top_artist_img" class="top_artist_image">
+                            <div class="position zain-bold">3</div>
+                        </div>
+                        <h4 class="zain-regular artist" id="3rd_top_artist_name">{{ artist_3.artist_name }}</h4>
+                    </div>
+
+                </section>
+
+                <section id="top-tracks" aria-label="Top Tracks">
+                    <h3 class="zain-regular" id="top-tracks-header" :class="{ darkmode: isDarkMode }">Top Tracks</h3>
+                    <div id="tracks_table">
+
+                        <article id="track_1" class="track" aria-label="Top track one">
+                            <img :src="track_1.album_cover_image_src" :alt="`Album cover for ${track_1.track_name} by ${track_1.artist_name}`" id="track_1_img" class="album_cover_img">
+                            <h4 class="zain-bold track_name" :class="{ darkmode: isDarkMode }" id="track_1_name">{{ track_1.track_name }}</h4>
+                            <h4 class="zain-regular track_artist" :class="{ darkmode: isDarkMode }" id="track_1_artist">{{ track_1.artist_name }}</h4>
+                        </article>
+
+                        <article id="track_2" class="track" aria-label="Top track two">
+                            <img :src="track_2.album_cover_image_src" :alt="`Album cover for ${track_2.track_name} by ${track_2.artist_name}`" id="track_2_img" class="album_cover_img">
+                            <h4 class="zain-bold track_name" :class="{ darkmode: isDarkMode }" id="track_2_name">{{ track_2.track_name }}</h4>
+                            <h4 class="zain-regular track_artist" :class="{ darkmode: isDarkMode }" id="track_2_artist">{{ track_2.artist_name }}</h4>
+                        </article>
+
+                        <section id="track_3" class="track" aria-label="Top track three">
+                            <img :src="track_3.album_cover_image_src" :alt="`Album cover for ${track_3.track_name} by ${track_3.artist_name}`" id="track_3_img" class="album_cover_img">
+                            <h4 class="zain-bold track_name" :class="{ darkmode: isDarkMode }" id="track_3_name">{{ track_3.track_name }}</h4>
+                            <h4 class="zain-regular track_artist" :class="{ darkmode: isDarkMode }" id="track_3_artist">{{ track_3.artist_name }}</h4>
+                        </section>
+
+                    </div>
+                </section>
+
+            </section>
+
+        </main>
+
+        <nav id="bottom-nav" role="navigation" aria-label="Bottom navigation" :class="{ darkmode: isDarkMode }"> <!-- apply to all pages -->
+            <div id="chat" class="nav-tab" :class="{ active: isActive('chat'), darkmode: isDarkMode }" @click="redirect('chats')" role="link" tabindex="0" aria-label="Go to Chat">
+                <h2 class="zain-bold">Chat</h2>
+                <i class="fa-solid fa-comment" aria-hidden="true"></i>
+            </div>
+            <div id="home" class="nav-tab" :class="{ active: isActive('home'), darkmode: isDarkMode }" @click="redirect('home')" role="link" tabindex="0" aria-label="Go to Home">
+                <h2 class="zain-bold">Home</h2>
+                <i class="fa-solid fa-house" aria-hidden="true"></i>
+            </div>
+            <div id="profile" class="nav-tab" :class="{ active: isActive('profile'), darkmode: isDarkMode }" @click="redirect('profile')" role="link" tabindex="0" aria-label="Go to Profile">
+                <h2 class="zain-bold">Profile</h2>
+                <i class="fa-solid fa-user" aria-hidden="true"></i>
+            </div>
+        </nav>
+
+    </div>
+
+    <script>
+        if (localStorage.getItem('darkMode') === 'true') {
+            const page = document.getElementById('page');
+            if (page) page.classList.add('darkmode');
+        }
+    </script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> <!-- for VUE -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> <!-- for axios -->
+    <script src="/javascripts/profile.js"></script>
+</body>
+</html>

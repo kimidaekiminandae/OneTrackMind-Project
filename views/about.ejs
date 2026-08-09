@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/about.css">
+    <script src="https://kit.fontawesome.com/aaf816bed9.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zain:ital,wght@0,200;0,300;0,400;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
+    <title>About</title>
+</head>
+<body>
+
+    <div id="page">
+
+        <header id="top-nav" role="banner" aria-label="Main navigation" :class="{ darkmode: isDarkMode }"> <!-- applied to all pages -->
+            <div id="logo" @click="redirect('home')">
+                <img src="/images/logo.png" alt="One Track Mind Logo">
+                <h1 class="zain-bold">One Track Mind</h1>
+            </div>
+            <nav id="about" @click="redirect('about')" aria-label="About Page Link">
+                <h2 class="zain-bold">About</h2>
+            </nav>
+        </header>
+
+        <main id="content" :class="{ darkmode: isDarkMode }">
+            <section id="what" aria-labelledby="what-heading" :class="{ darkmode: isDarkMode }">
+                <h2 class="zain-regular heading" :class="{ darkmode: isDarkMode }"><i class="zain-bold">What is</i> One Track Mind</h2>
+                <div class="container" :class="{ darkmode: isDarkMode }">
+                    <p class="zain-regular" :class="{ darkmode: isDarkMode }"><i class="zain-bold">Welcome to One Track Mind, the ultimate dating app for music lovers who want real connections, not endless small talk.</i><br>
+                    Here, you’re focused on one match at a time — because the best relationships deserve your full attention (and your best playlists). <br>
+                    <i class="zain-bold">How it works:</i> <br>
+                    One Track Mind matches you with people who vibe with your music taste. You’ll get a peek at their top 3 favorite songs and artists, along with their profile pics, age, and how far away they are. If you both swipe right, you unlock even more music insights and can start a live chat to get to know each other better.<br>
+                    <i class="zain-bold">The twist?</i> <br>
+                    You can only have one active chat at a time. No distractions, no games — just one real chance to connect. You can end the chat anytime by unmatching, opening the door to new connections with other people. Completed chats are tucked away in your chat archive, with just the match’s name and last message saved. <br>
+                    </p>
+                </div>
+            </section>
+            <section id="how" aria-labelledby="how-heading" :class="{ darkmode: isDarkMode }">
+                <h2 class="zain-regular heading" :class="{ darkmode: isDarkMode }"><i class="zain-bold">How to use</i> One Track Mind</h2>
+                <div class="container" :class="{ darkmode: isDarkMode }">
+                    <p class="zain-regular" :class="{ darkmode: isDarkMode }"> Getting started is easy — here’s your guide to finding real connections through music: <br>
+                       <i class="zain-bold">👤 1. Set Up Your Profile</i> <br>
+                        Before you dive in, head over to the Profile page. Here, you can: <br>
+                        Choose your nickname and upload some profile photos. <br>
+                        Set your swipe preferences — like age range, distance, and whether you want to match more by favorite songs or artists. <br>
+                        This helps us show you people who truly match your vibe! <br>
+                        <i class="zain-bold">🎵 2. Swipe and Match </i><br>
+                        Next, jump into the Home page. <br>
+                        You’ll scroll through profiles showing users' top 3 songs and artists, plus their photos and distance from you.
+                        Swipe right if you feel a connection — or swipe left to keep exploring.
+                        When you and another user both swipe right, it’s a match! 🎉 <br>
+                        <i class="zain-bold">💬 3. Start Chatting </i><br>
+                        Once you’ve matched, head to the Chats page to kick off the conversation. While chatting, you can: <br>
+                        Search songs and artists to see how your music tastes compare. <br>
+                        Build up streaks by keeping the chat alive. <br>
+                        Remember: you can only have one active chat at a time, so make it count! <br>
+                        <i class="zain-bold">🛑 4. End a Chat</i><br>
+                        At any point during the conversation, either of you can:<br>
+                        Unmatch and complete the chat if it’s not the right fit, or if you’re ready to exchange contact info and take it beyond the app. <br>
+                        Completed chats are archived — you'll still see their name, last message, and chat date in your Chats page. <br>
+                        <i class="zain-bold">And that’s it! Set up your profile, swipe, match, and let your shared love of music spark something amazing. 🎧❤️ </i> <br>
+                    </p>
+                </div>
+            </section>
+        </main>
+
+        <nav id="bottom-nav" role="navigation" aria-label="Bottom navigation" :class="{ darkmode: isDarkMode }"> <!-- apply to all pages -->
+            <div id="chat" class="nav-tab" :class="{ active: isActive('chat'), darkmode: isDarkMode }" @click="redirect('chats')" role="link" tabindex="0" aria-label="Go to Chat">
+                <h2 class="zain-bold">Chat</h2>
+                <i class="fa-solid fa-comment" aria-hidden="true"></i>
+            </div>
+            <div id="home" class="nav-tab" :class="{ active: isActive('home'), darkmode: isDarkMode }" @click="redirect('home')" role="link" tabindex="0" aria-label="Go to Home">
+                <h2 class="zain-bold">Home</h2>
+                <i class="fa-solid fa-house" aria-hidden="true"></i>
+            </div>
+            <div id="profile" class="nav-tab" :class="{ active: isActive('profile'), darkmode: isDarkMode }" @click="redirect('profile')" role="link" tabindex="0" aria-label="Go to Profile">
+                <h2 class="zain-bold">Profile</h2>
+                <i class="fa-solid fa-user" aria-hidden="true"></i>
+            </div>
+        </nav>
+
+    </div>
+
+    <script>
+        if (localStorage.getItem('darkMode') === 'true') {
+            const page = document.getElementById('page');
+            if (page) page.classList.add('darkmode');
+        }
+    </script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> <!-- for VUE -->
+    <script src="/javascripts/about.js"></script>
+
+</body>
+</html>

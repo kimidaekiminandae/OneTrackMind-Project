@@ -1,0 +1,221 @@
+/*
+use to set basic styles applied to all pages
+i.e. set default background colours, set margins/padddings to 0, set default font family,
+add logo in top corner top nav bar, add bottom nav bar, etc.
+then set defaults for specific elements
+i.e. content div colours, button colours, rounded edges, different text styles were necessary, image defaults, etc.
+
+use seperate page specific style sheets for organising flex box arrangement of divs,
+hover and other animation effects, setting specific sizes of elements, etc.
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+#page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    background-color: #EED4DB;
+}
+
+/* dark mode */
+#page.darkmode {
+    background-color: #73986f;
+}
+
+/* zain (google) font class defaults */
+.zain-extralight {
+    font-family: "Zain", sans-serif;
+    font-weight: 200;
+    font-style: normal;
+  }
+
+.zain-light {
+    font-family: "Zain", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}
+
+.zain-regular {
+    font-family: "Zain", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.zain-bold {
+    font-family: "Zain", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.zain-extrabold {
+    font-family: "Zain", sans-serif;
+    font-weight: 800;
+    font-style: normal;
+}
+
+.zain-black {
+    font-family: "Zain", sans-serif;
+    font-weight: 900;
+    font-style: normal;
+}
+
+.zain-light-italic {
+    font-family: "Zain", sans-serif;
+    font-weight: 300;
+    font-style: italic;
+}
+
+.zain-regular-italic {
+    font-family: "Zain", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+}
+
+/* top nav bar */
+#top-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /* font-size: 1.2rem; */
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: #CB748E;
+    text-shadow: 0.125rem 0.125rem 0.25rem white;
+}
+
+/* dark mode */
+#top-nav.darkmode {
+    color:#2d4839;
+}
+
+#top-nav h1 {
+    font-size: 1.8em;
+    transition: text-decoration 0.3s ease;
+}
+
+#top-nav h2 {
+    font-size: 1.8em;
+    transition: text-decoration 0.3s ease;
+}
+
+#top-nav h2:hover, #top-nav h1:hover {
+    text-decoration: underline;
+}
+
+#logo {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+#logo img {
+    max-height: 2rem;
+    padding-left: 0.3rem;
+}
+
+#logo, #about > * {
+    margin: 0.5rem;
+    cursor: pointer;
+}
+
+/* bottom nav bar */
+#bottom-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    /* font-size: 1.5rem; */
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    color: white;
+}
+
+#chat {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex: 1;
+    justify-content: center;
+    border-top-right-radius: 0.625rem; /* 10px -> 0.625rem */
+}
+
+#chat > * {
+    padding: 0.5rem;
+}
+
+#home {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex: 1;
+    justify-content: center;
+    border-top-left-radius: 0.625rem;
+    border-top-right-radius: 0.625rem;
+}
+
+#home > * {
+    padding: 0.5rem;
+}
+
+#profile {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex: 1;
+    justify-content: center;
+    border-top-left-radius: 0.625rem;
+}
+
+#profile > * {
+    padding: 0.5rem;
+}
+
+.nav-tab {
+    cursor: pointer;
+    transition: background-color 0.3s;
+    background-color: #D698AB;
+    border: 0.03125rem solid #EED4DB;
+}
+
+/* dark mode */
+.nav-tab.darkmode {
+    background-color: #426e55;
+    border: 0.03125rem solid #73986f;
+}
+
+.nav-tab:hover {
+    background-color: #CB748E;
+}
+
+/* dark mode */
+.nav-tab.darkmode:hover {
+    background-color: #2d4839;
+}
+
+.nav-tab.active {
+    background-color: #EED4DB;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+/* dark mode */
+.nav-tab.active.darkmode {
+    background-color: #73986f;
+}
+
+#bottom-nav div h2 {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+/* content */
+#content {
+    flex: 1;
+}

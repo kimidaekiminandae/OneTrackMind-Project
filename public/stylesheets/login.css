@@ -1,0 +1,70 @@
+#content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    justify-self: center;
+    margin-bottom: 5em;
+}
+
+#login-container {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    background-color: white;
+    padding: 1rem;
+    margin-top: 8em;
+    align-items: stretch;
+    border-radius: 0.625em;
+    max-height: fit-content;
+    padding: 2em;
+}
+
+#login-container > * {
+    margin-bottom: 1rem;
+}
+
+#login-container h2 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 0;
+    color: #CB748E;
+}
+
+/* dark mode */
+#login-container h2.darkmode {
+    color: #2d4839;
+}
+
+#input {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+button {
+    padding: 0.75rem;
+    font-size: 2rem;
+    background-color: #D698AB;
+    color: white;
+    border: none;
+    border-radius: 0.5em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 1rem;
+    margin-bottom: 0;
+}
+
+/* dark mode */
+button.darkmode {
+    background-color: #426e55;
+}
+
+button:hover {
+    background-color: #CB748E;
+}
+
+/* dark mode */
+
+button.darkmode:hover {
+    background-color: #2d4839;
+}

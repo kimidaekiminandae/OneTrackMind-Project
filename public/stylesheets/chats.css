@@ -1,0 +1,253 @@
+#content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5rem;
+    margin: 2em;
+}
+
+.active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 50em;
+}
+
+#active_chat_header {
+    font-size: 2.5rem;
+    align-self: flex-start;
+    color: #CB748E;
+}
+
+/* dark mode */
+.darkmode #active_chat_header {
+    color: #2d4839;
+}
+
+.active_chat {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding-left: 1rem;
+    padding-top: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 0;
+    border-radius: 0.3125em;
+    background-color: rgba(214, 152, 171, 0.8);
+    cursor: pointer;
+
+    width: 100%;
+    max-width: 50em;
+    min-height: 11.5625em;
+
+    box-shadow: 0 0 0.625em #fff;
+
+    transition: transform 0.3s ease;
+
+    margin-left: 5em;
+    margin-right: 5em;
+}
+
+/* dark mode */
+.active_chat.darkmode {
+    background-color: rgba(66, 110, 85, 0.8);
+}
+
+.active_chat:hover {
+    transform: scale(1.02) translateY(-0.125em);
+}
+
+#active_match_profile_img {
+    width: 9.375em;
+    height: 9.375em;
+    object-fit: cover;
+    border-radius: 0.3125em;
+    color: white;
+    box-shadow: 0 0 0.625em #CB748E;
+}
+
+/* dark mode */
+#active_match_profile_img.darkmode {
+    box-shadow: 0 0 0.625em #2d4839;
+}
+
+#active_chat_info {
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+
+    flex-grow: 1;
+    gap: 0.5rem;
+}
+
+#active_chat_details {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+#user_details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+#user_details .nickname {
+    font-size: 2rem;
+    color: white;
+    text-shadow: 0 0 0.3125em #CB748E;
+}
+
+/* dark mode */
+#user_details .nickname.darkmode {
+    text-shadow: 0 0 0.3125em #2d4839;
+}
+
+#top_artist, #top_track {
+    font-size: 1.3rem;
+    color: white;
+}
+
+#chat_streaks {
+    padding: 0.5rem;
+    font-size: 1.1rem;
+    box-shadow: 0 0 0.625em #CB748E;
+    color: white;
+    min-width: 12.5em;
+    height: 2.3em;
+    text-align: center;
+    border-radius: 5px;
+    white-space: nowrap;
+}
+
+/* dark mode */
+#chat_streaks.darkmode {
+    box-shadow: 0 0 0.625em #2d4839;
+}
+
+#latest_message {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 2rem;
+    position: relative;
+}
+
+.message_preview {
+    font-style: italic;
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.616);
+    position: absolute;
+    right: 0rem;
+    bottom: 0.8rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+
+.timestamp {
+    font-size: 1.2rem;
+    position: absolute;
+    right: 0rem;
+    bottom: 2rem;
+    font-size: 0.9rem;
+    color: white;
+}
+
+.archive {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 50em;
+    margin: 0 auto;
+    align-items: center;
+}
+
+#archived_chats_header {
+    font-size: 2rem;
+    align-self: flex-start;
+    color: #CB748E;
+}
+
+/* dark mode */
+#archived_chats_header.darkmode {
+    color: #2d4839;
+}
+
+#archived_chats {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    overflow-y: auto;
+    min-width: 50em;
+    max-height: 9.375em;
+    margin-bottom: 1.25em;
+}
+
+.archived_chat {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 0.8rem;
+    border-radius: 0.5em;
+    background-color: rgba(214, 152, 171, 0.5);
+    position: relative;
+}
+
+/* dark mode */
+.archived_chat.darkmode {
+    background-color: rgba(66, 110, 85, 0.5);
+}
+
+.archived_chat_profile_img {
+    width: 3.75em;
+    height: 3.75em;
+    object-fit: cover;
+    box-shadow: 0 0 3em #CB748E;
+    border-radius: 3.125em;
+    color: white;
+}
+
+/* dark mode */
+.archived_chat_profile_img.darkmode {
+    box-shadow: 0 0 3em #2d4839;
+}
+
+.chatlog_container {
+    display: flex;
+    flex-direction: column;
+}
+
+.archived_chat .nickname {
+    font-size: 1.5rem;
+    color: white;
+    text-shadow: 0 0 0.125em #CB748E;
+}
+
+/* dark mode */
+.archived_chat .nickname.darkmode {
+    text-shadow: 0 0 0.125em #2d4839;
+}
+
+.archived_last_message {
+    font-style: italic;
+    font-size: 1.2rem;
+    color: white;
+    align-self: flex-end;
+}
+
+.archived_timestamp {
+    font-size: 1rem;
+    position: absolute;
+    top: 0.5rem;
+    right: 1rem;
+    font-size: 0.9rem;
+    color: white;
+}

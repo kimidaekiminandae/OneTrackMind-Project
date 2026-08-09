@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/new_match.css">
+    <script src="https://kit.fontawesome.com/aaf816bed9.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zain:ital,wght@0,200;0,300;0,400;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
+    <title>New Match</title>
+</head>
+<body>
+
+    <div id="page">
+
+        <div id="top-nav">
+            <div id="logo">
+                <img src="/images/logo.png" alt="One Track Mind Logo">
+                <h2 class="zain-bold">One Track Mind</h2>
+            </div>
+            <div id="about">
+                <h2 class="zain-bold">About</h2>
+            </div>
+        </div>
+
+        <div id="content">,  
+            <h2 class="zain-bold">You have a new match!</h2>
+            <div id="match_info">
+                <div id="match_details">
+                    <div id="user-info">
+                        <h3 id="nickname" class="zain-regular">Nickname</h3>
+                        <div id="user-details">
+                            <h4 class="zain-bold" id="age">Age</h4>
+                            <h4 class="zain-regular-italic" id="address">Suburb, State</h4>
+                        </div>
+                    </div>
+                    <div id="profile-pictures">
+                        <img src="/images/user_profile_picture.jpg" alt="User Profile Pictures" id="user_picture">
+                        <h4 class="zain-regular" id="image_number">1 / 3</h4>
+                    </div>
+                </div>
+                <div id="spotify_stats">
+                    <div id="top-artists">
+                        <div id="2nd_podium" class="second podium">
+                            <div class="image_wrap">
+                                <img src="/2topartist.png" alt="2nd Top Artist Image" id="2nd_top_artist_img" class="top_artist_image">
+                                <div class="position zain-bold">2</div>
+                            </div>
+                            <h4 class="zain-regular artist" id="2nd_top_artist_name">Artist</h4>
+                        </div>
+                        <div id="1st_podium" class="first podium">
+                            <div class="image_wrap">
+                                <img src="/1topartist.png" alt="1st Top Artist Image" id="1st_top_artist_img" class="top_artist_image">
+                                <div class="position zain-bold">1</div>
+                            </div>
+                            <h4 class="zain-regular artist" id="1st_top_artist_name">Artist</h4>
+                        </div>
+                        <div id="3rd_podium" class="third podium">
+                            <div class="image_wrap">
+                                <img src="/3topartist.png" alt="3rd Top Artist Image" id="3rd_top_artist_img" class="top_artist_image">
+                                <div class="position zain-bold">3</div>
+                            </div>
+                            <h4 class="zain-regular artist" id="3rd_top_artist_name">Artist</h4>
+                        </div>
+                    </div>
+                    <div id="top-tracks">
+                        <h3 class="zain-regular" id="top-tracks-header">Top Tracks</h3>
+                        <div id="tracks_table">
+                            <div id="track_1" class="track">
+                                <img src="/track_1.png" alt="Top Track 1 Album Cover" id="track_1_img" class="album_cover_img">
+                                <h4 class="zain-bold track_name" id="track_1_name">Track Name</h4>
+                                <h4 class="zain-regular track_artist" id="track_1_artist">Artist</h4>
+                            </div>
+                            <div id="track_2" class="track">
+                                <img src="/track_2.png" alt="Top Track 2 Album Cover" id="track_2_img" class="album_cover_img">
+                                <h4 class="zain-bold track_name" id="track_2_name">Track Name</h4>
+                                <h4 class="zain-regular track_artist" id="track_2_artist">Artist</h4>
+                            </div>
+                            <div id="track_3" class="track">
+                                <img src="/track_3.png" alt="Top Track 3 Album Cover" id="track_3_img" class="album_cover_img">
+                                <h4 class="zain-bold track_name" id="track_3_name">Track Name</h4>
+                                <h4 class="zain-regular track_artist" id="track_3_artist">Artist</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="buttons">
+                <div id="match_button">
+                    <p class="zain-bold">Chat</p>
+                    <i class="fa-solid fa-comment"></i>
+                </div>
+                <div id="unmatch_button">
+                    <p class="zain-bold">Unmatch</p>
+                    <i class="fa-solid fa-heart-crack"></i>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="bottom-nav">
+            <div id="chat" class="nav-tab">
+                <h2 class="zain-bold">Chat</h2>
+                <i class="fa-solid fa-comment"></i>
+            </div>
+            <div id="home" class="nav-tab">
+                <h2 class="zain-bold">Home</h2>
+                <i class="fa-solid fa-house"></i>
+            </div>
+            <div id="profile" class="nav-tab">
+                <h2 class="zain-bold">Profile</h2>
+                <i class="fa-solid fa-user"></i>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="/javascripts/all_pages.js"></script>
+
+</body>
+</html>

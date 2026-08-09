@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/login.css">
+    <script src="https://kit.fontawesome.com/aaf816bed9.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zain:ital,wght@0,200;0,300;0,400;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> <!-- for VUE -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> <!-- for axios -->
+    <title>Login</title>
+</head>
+
+<body>
+
+    <div id="page">
+
+        <header id="top-nav" role="banner" aria-label="Main navigation" :class="{ darkmode: isDarkMode }"> <!-- applied to all pages -->
+            <div id="logo" @click="redirect('home')">
+                <img src="/images/logo.png" alt="One Track Mind Logo">
+                <h1 class="zain-bold">One Track Mind</h1>
+            </div>
+            <nav id="about" @click="redirect('about')" aria-label="About Page Link">
+                <h2 class="zain-bold">About</h2>
+            </nav>
+        </header>
+
+        <main id="content" aria-labelledby="login-header">
+
+            <div id="login-container" aria-label="Login Section">
+                <h2 class="zain-regular-italic" :class="{ darkmode: isDarkMode }">Find who's on your mind...</h2>
+                <button type="button" class="zain-regular" :class="{ darkmode: isDarkMode }" @click="loginUser" aria-label="Login with your Spotify account">
+                    Login with Spotify
+                </button>
+            </div>
+
+        </main>
+
+        <nav id="bottom-nav" role="navigation" aria-label="Bottom navigation" :class="{ darkmode: isDarkMode }"> <!-- apply to all pages -->
+            <div id="chat" class="nav-tab" :class="{ active: isActive('chat'), darkmode: isDarkMode }" @click="redirect('chats')" role="link" tabindex="0" aria-label="Go to Chat">
+                <h2 class="zain-bold">Chat</h2>
+                <i class="fa-solid fa-comment" aria-hidden="true"></i>
+            </div>
+            <div id="home" class="nav-tab" :class="{ active: isActive('home'), darkmode: isDarkMode }" @click="redirect('home')" role="link" tabindex="0" aria-label="Go to Home">
+                <h2 class="zain-bold">Home</h2>
+                <i class="fa-solid fa-house" aria-hidden="true"></i>
+            </div>
+            <div id="profile" class="nav-tab" :class="{ active: isActive('profile'), darkmode: isDarkMode }" @click="redirect('profile')" role="link" tabindex="0" aria-label="Go to Profile">
+                <h2 class="zain-bold">Profile</h2>
+                <i class="fa-solid fa-user" aria-hidden="true"></i>
+            </div>
+        </nav>
+
+    </div>
+
+    <script>
+        if (localStorage.getItem('darkMode') === 'true') {
+            const page = document.getElementById('page');
+            if (page) page.classList.add('darkmode');
+        }
+    </script>
+    <script src="/javascripts/login.js"></script>
+</body>
+</html>

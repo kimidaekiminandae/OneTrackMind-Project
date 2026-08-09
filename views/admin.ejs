@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OneTrackMind Admin Dashboard</title>
+    <link rel="stylesheet" href="/stylesheets/admin.css">
+</head>
+<body>
+
+    <div class="page-container">
+
+        <header class="header-section">
+            <h1 class="dashboard-title">OneTrackMind Admin Dashboard</h1>
+            <p class="dashboard-subtitle">
+                Manage user profiles, matches,content and block/delete users if necessary.
+            </p>
+        </header>
+
+        <div id="message-container" class="message-box hidden"></div>
+        <div id="error-container" class="error-box hidden"></div>
+        <div id="loading-indicator" class="loading-indicator">
+            Loading Admin Dashboard...
+        </div>
+
+
+        <section id="users-grid" class="users-grid hidden"></section>
+
+
+        <footer class="footer-section">
+            <p>&copy; <%= new Date().getFullYear() %> OneTrackMind Admin Panel. All rights reserved.</p>
+        </footer>
+
+    </div>
+
+    <script src="/javascripts/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/chat_settings.css">
+    <script src="https://kit.fontawesome.com/aaf816bed9.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zain:ital,wght@0,200;0,300;0,400;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
+    <title>Chat Settings</title>
+</head>
+<body>
+
+    <div id="page">
+
+        <header id="top-nav" role="banner" aria-label="Main navigation" :class="{ darkmode: isDarkMode }"> <!-- applied to all pages -->
+            <div id="logo" @click="redirect('home')">
+                <img src="/images/logo.png" alt="One Track Mind Logo">
+                <h1 class="zain-bold">One Track Mind</h1>
+            </div>
+            <nav id="about" @click="redirect('about')" aria-label="About Page Link">
+                <h2 class="zain-bold">About</h2>
+            </nav>
+        </header>
+
+        <main id="content">
+
+            <header id="settings_header">
+                <h2 class="zain-bold" :class="{ darkmode: isDarkMode }">Settings</h2>
+                <i
+                class="fa-solid fa-comment"
+                id="back_to_chat"
+                @click="redirect('active_chat')"
+                aria-label="Return to chat"
+                role="button"
+                tabindex="0"
+                @keyup.enter="redirect('/active_chat')"
+                @keyup.space.prevent="redirect('/active_chat')"></i>
+            </header>
+
+            <div id="settings_body">
+                <section id="match_info" aria-labelledby="nickname">
+
+                    <div id="match_details">
+
+                        <div id="user-info" :class="{ darkmode: isDarkMode }">
+                            <h3 id="nickname" class="zain-regular">{{ nickname }}</h3>
+                            <div id="user-details">
+                                <h4 class="zain-bold" id="age">{{ age }}</h4>
+                                <h4 class="zain-regular-italic" id="address">{{ location }}</h4>
+                            </div>
+                        </div>
+
+                        <div
+                        id="profile-pictures"
+                        :class="{ darkmode: isDarkMode }"
+                        @click="next_img"
+                        aria-label="Next profile image"
+                        role="button"
+                        tabindex="0"
+                        @keyup.enter="next_img"
+                        @keyup.space.prevent="next_img"
+                        >
+                            <img :src="user_images[current_img_num - 1]" :alt="`User Profile Picture ${current_img_num}`" id="user_picture">
+                            <h4 class="zain-regular" :class="{ darkmode: isDarkMode }" id="image_number">{{ current_img_num }} / {{ total_img_num }}</h4>
+                        </div>
+
+                        <div
+                        id="unmatch_button"
+                        @click="unmatch"
+                        aria-label="Unmatch with user"
+                        role="button"
+                        tabindex="0"
+                        @keyup.enter="unmatch"
+                        @keyup.space.prevent="unmatch"
+                        :class="{ darkmode: isDarkMode }"
+                        >
+                            <p class="zain-regular">Unmatch</p>
+                            <i class="fa-solid fa-heart-crack"></i>
+                        </div>
+
+                    </div>
+
+                    <section id="spotify_stats" aria-label="Spotify statistics">
+
+                        <div id="top-artists" aria-label="Top Artists" role="region">
+
+                            <div id="2nd_podium" class="second podium" :class="{ darkmode: isDarkMode }" aria-label="Second top artist">
+                                <div class="image_wrap">
+                                    <img :src="artist_2.image_src" alt="2nd Top Artist Image" id="2nd_top_artist_img" class="top_artist_image">
+                                    <div class="position zain-bold">2</div>
+                                </div>
+                                <h4 class="zain-regular artist" id="2nd_top_artist_name">{{ artist_2.artist_name }}</h4>
+                            </div>
+
+                            <div id="1st_podium" class="first podium" :class="{ darkmode: isDarkMode }" aria-label="Top artist">
+                                <div class="image_wrap">
+                                    <img :src="artist_1.image_src" alt="1st Top Artist Image" id="1st_top_artist_img" class="top_artist_image">
+                                    <div class="position zain-bold">1</div>
+                                </div>
+                                <h4 class="zain-regular artist" id="1st_top_artist_name">{{ artist_1.artist_name }}</h4>
+                            </div>
+
+                            <div id="3rd_podium" class="third podium" :class="{ darkmode: isDarkMode }" aria-label="Third top artist">
+                                <div class="image_wrap">
+                                    <img :src="artist_3.image_src" alt="3rd Top Artist Image" id="3rd_top_artist_img" class="top_artist_image">
+                                    <div class="position zain-bold">3</div>
+                                </div>
+                                <h4 class="zain-regular artist" id="3rd_top_artist_name">{{ artist_3.artist_name }}</h4>
+                            </div>
+
+                        </div>
+
+                        <div id="top-tracks" aria-label="Top Tracks" role="region">
+                            <h3 class="zain-regular" id="top-tracks-header" :class="{ darkmode: isDarkMode }">Top Tracks</h3>
+                            <div id="tracks_table">
+
+                                <article id="track_1" class="track" aria-label="Top track 1">
+                                    <img :src="track_1.album_cover_image_src" alt="Top Track 1 Album Cover" id="track_1_img" class="album_cover_img">
+                                    <h4 class="zain-bold track_name" :class="{ darkmode: isDarkMode }" id="track_1_name">{{ track_1.track_name }}</h4>
+                                    <h4 class="zain-regular track_artist" :class="{ darkmode: isDarkMode }" id="track_1_artist">{{ track_1.artist_name }}</h4>
+                                </article>
+
+                                <article id="track_2" class="track" aria-label="Top track 2">
+                                    <img :src="track_2.album_cover_image_src" alt="Top Track 2 Album Cover" id="track_2_img" class="album_cover_img">
+                                    <h4 class="zain-bold track_name" :class="{ darkmode: isDarkMode }" id="track_2_name">{{ track_2.track_name }}</h4>
+                                    <h4 class="zain-regular track_artist" :class="{ darkmode: isDarkMode }" id="track_2_artist">{{ track_2.artist_name }}</h4>
+                                </article>
+
+                                <article id="track_3" class="track" aria-label="Top track 3">
+                                    <img :src="track_3.album_cover_image_src" alt="Top Track 3 Album Cover" id="track_3_img" class="album_cover_img">
+                                    <h4 class="zain-bold track_name" :class="{ darkmode: isDarkMode }" id="track_3_name">{{ track_3.track_name }}</h4>
+                                    <h4 class="zain-regular track_artist" :class="{ darkmode: isDarkMode }" id="track_3_artist">{{ track_3.artist_name }}</h4>
+                                </article>
+
+                            </div>
+                        </div>
+                    </section>
+                </section>
+
+                <section id="hit_archive" aria-label="Search and archive section">
+                    <div id="search" role="search">
+                        <h3 class="zain-bold" :class="{ darkmode: isDarkMode }">Find out more!</h3>
+                        <div id="search_bar">
+                            <input type="text" v-model="search_term" @input="autocomplete" placeholder="Type artist or track..." class="zain-light-italic" :class="{ darkmode: isDarkMode }" aria-label="Search tracks or artists">
+                            <i
+                            class="fa-solid fa-magnifying-glass"
+                            @click="search"
+                            aria-label="Search"
+                            role="button"
+                            tabindex="0"
+                            @keyup.enter="search"
+                            @keyup.space.prevent="search"
+                            ></i>
+
+                            <ul v-if="suggestions.length" id="suggestions" :class="{ darkmode: isDarkMode }" aria-label="Suggestions">
+                                <li
+                                    v-for="(suggestion, index) in suggestions"
+                                    class="suggestion_item zain-regular"
+                                    :class="{ darkmode: isDarkMode }"
+                                    :key="index"
+                                    @click="selectSuggestion(suggestion)"
+                                    role="option"
+                                >
+                                    {{ suggestion.name }} <small>({{ suggestion.type }})</small>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="archive" role="region" aria-label="Hit archive">
+                        <h3 class="zain-bold">Hit Archive</h3>
+                        <table id="previous_hits" aria-describedby="head">
+                            <thead>
+                                <tr id="head">
+                                    <th class="table_img" :class="{ darkmode: isDarkMode }"></th>
+                                    <th class="zain-bold search_term" :class="{ darkmode: isDarkMode }">Search Term</th>
+                                    <th class="zain-bold you" :class="{ darkmode: isDarkMode }">You</th>
+                                    <th class="zain-bold match" :class="{ darkmode: isDarkMode }">Match</th>
+                                </tr>
+                            </thead>
+                        </table>
+                        <div class="scrollable_body">
+                            <table>
+                                <tbody>
+                                    <tr class="data" v-for="hit in hit_archive" :key="hit.search_id">
+                                        <td class="table_img" :class="{ darkmode: isDarkMode }"><img :src="hit.artist_img_src" :alt="`Image for ${hit.search_term}`"></td>
+                                        <td class="zain-regular-italic search_term" :class="{ darkmode: isDarkMode }">{{ hit.search_term }}</td>
+                                        <td class="zain-regular you" :class="{ darkmode: isDarkMode }">{{ hit.user_1_rank != null ? '#' + hit.user_1_rank : 'N/A' }}</td>
+                                        <td class="zain-regular match" :class="{ darkmode: isDarkMode }">{{ hit.user_2_rank != null ? '#' + hit.user_2_rank : 'N/A' }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <nav id="bottom-nav" role="navigation" aria-label="Bottom navigation" :class="{ darkmode: isDarkMode }"> <!-- apply to all pages -->
+            <div id="chat" class="nav-tab" :class="{ active: isActive('chat'), darkmode: isDarkMode }" @click="redirect('chats')" role="link" tabindex="0" aria-label="Go to Chat">
+                <h2 class="zain-bold">Chat</h2>
+                <i class="fa-solid fa-comment" aria-hidden="true"></i>
+            </div>
+            <div id="home" class="nav-tab" :class="{ active: isActive('home'), darkmode: isDarkMode }" @click="redirect('home')" role="link" tabindex="0" aria-label="Go to Home">
+                <h2 class="zain-bold">Home</h2>
+                <i class="fa-solid fa-house" aria-hidden="true"></i>
+            </div>
+            <div id="profile" class="nav-tab" :class="{ active: isActive('profile'), darkmode: isDarkMode }" @click="redirect('profile')" role="link" tabindex="0" aria-label="Go to Profile">
+                <h2 class="zain-bold">Profile</h2>
+                <i class="fa-solid fa-user" aria-hidden="true"></i>
+            </div>
+        </nav>
+
+    </div>
+
+    <script>
+        if (localStorage.getItem('darkMode') === 'true') {
+            const page = document.getElementById('page');
+            if (page) page.classList.add('darkmode');
+        }
+    </script>
+    <script> const SPOTIFY_TOKEN = "<%= access_token %>"; </script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> <!-- for VUE -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> <!-- for axios -->
+    <script src="/javascripts/chat_settings.js"></script>
+
+</body>
+</html>

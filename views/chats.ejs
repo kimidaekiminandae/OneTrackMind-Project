@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/chats.css">
+    <script src="https://kit.fontawesome.com/aaf816bed9.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zain:ital,wght@0,200;0,300;0,400;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
+    <title>Chats</title>
+</head>
+<body>
+
+    <div id="page">
+
+        <header id="top-nav" role="banner" aria-label="Main navigation" :class="{ darkmode: isDarkMode }"> <!-- applied to all pages -->
+            <div id="logo" @click="redirect('home')">
+                <img src="/images/logo.png" alt="One Track Mind Logo">
+                <h1 class="zain-bold">One Track Mind</h1>
+            </div>
+            <nav id="about" @click="redirect('about')" aria-label="About Page Link">
+                <h2 class="zain-bold">About</h2>
+            </nav>
+        </header>
+
+        <main id="content">
+
+            <section class="active" v-if="active_match_id" aria-label="Active Chat Section" :class="{ darkmode: isDarkMode }">
+
+                <h3 id="active_chat_header" class="zain-bold">On your mind...</h3>
+
+                <article
+                    class="active_chat"
+                    :class="{ darkmode: isDarkMode }"
+                    id="active_chat_ID"
+                    @click="redirect('active_chat')"
+                    role="button"
+                    tabindex="0"
+                    aria-label="Open chat with {{ nickname }}"
+                    @keyup.enter="redirect('active_chat')"
+                    @keyup.space.prevent="redirect('active_chat')"
+                >
+
+                    <img :src="profile_picture" :alt="`Profile picture of ${nickname}`" id="active_match_profile_img" :class="{ darkmode: isDarkMode }">
+                    <div id="active_chat_info">
+                        <div id="active_chat_details">
+
+                            <header id="user_details">
+                                <h3 class="zain-bold nickname" :class="{ darkmode: isDarkMode }">{{ nickname }}</h3>
+                                <h4 class="zain-regular" id="top_artist">Top Artist: {{ top_artist }}</h4>
+                                <h4 class="zain-regular" id="top_track">Top Track: {{ top_track }}, {{ top_track_artist }}</h4>
+                            </header>
+
+                            <div id="chat_streaks" :class="{ darkmode: isDarkMode }">
+                                <h4 class="zain-regular">You have been chatting for {{ chat_streak }} days!</h4>
+                            </div>
+                        </div>
+
+                        <div v-if="recent_message" id="latest_message" aria-label="Most recent message">
+                            <h4 id="recent_message_preview" class="zain-regular message_preview">{{ recent_message }}</h4>
+                            <h3 class="zain-regular timestamp" id="last_active_message_timestamp">{{ timestamp }}</h3>
+                        </div>
+                        <div v-else id="latest_message" aria-label="No recent messages">
+                            <h4 id="recent_message_preview" class="zain-regular-italic message_preview">No recent messages...</h4>
+                        </div>
+                    </div>
+
+                </article>
+            </section>
+            <section class="active" v-else aria-label="No Active Chat Message" :class="{ darkmode: isDarkMode }">
+                <h3 id="active_chat_header" class="zain-bold">No active chats...</h3>
+            </section>
+
+            <section class="archive">
+                <h3 id="archived_chats_header" class="zain-bold" :class="{ darkmode: isDarkMode }">
+                    {{ archived_chats.length ? "No replays..." : "No archived chats..." }}
+                </h3>
+
+                <div id="archived_chats" v-if="archived_chats.length" aria-label="List of archived chats">
+
+                    <article class="archived_chat" :class="{ darkmode: isDarkMode }" v-for="chat in archived_chats" :key="chat.id" aria-label="Archived chat with {{ chat.nickname }}">
+                        <img :src="chat.profile_image" :alt="'Profile picture of ' + chat.nickname" class="archived_chat_profile_img" :class="{ darkmode: isDarkMode }">
+                        <div class="chatlog_container">
+                            <h3 class="zain-bold nickname" :class="{ darkmode: isDarkMode }">{{chat.nickname}}</h3>
+                            <h4 class="zain-light-italic archived_last_message">"{{ chat.last_message }}"</h4>
+                        </div>
+                        <h3 class="zain-regular archived_timestamp">{{ chat.timestamp }}</h3>
+                    </article>
+
+                </div>
+            </section>
+        </main>
+
+        <nav id="bottom-nav" role="navigation" aria-label="Bottom navigation" :class="{ darkmode: isDarkMode }"> <!-- apply to all pages -->
+            <div id="chat" class="nav-tab" :class="{ active: isActive('chat'), darkmode: isDarkMode }" @click="redirect('chats')" role="link" tabindex="0" aria-label="Go to Chat">
+                <h2 class="zain-bold">Chat</h2>
+                <i class="fa-solid fa-comment" aria-hidden="true"></i>
+            </div>
+            <div id="home" class="nav-tab" :class="{ active: isActive('home'), darkmode: isDarkMode }" @click="redirect('home')" role="link" tabindex="0" aria-label="Go to Home">
+                <h2 class="zain-bold">Home</h2>
+                <i class="fa-solid fa-house" aria-hidden="true"></i>
+            </div>
+            <div id="profile" class="nav-tab" :class="{ active: isActive('profile'), darkmode: isDarkMode }" @click="redirect('profile')" role="link" tabindex="0" aria-label="Go to Profile">
+                <h2 class="zain-bold">Profile</h2>
+                <i class="fa-solid fa-user" aria-hidden="true"></i>
+            </div>
+        </nav>
+
+    </div>
+
+    <script>
+        if (localStorage.getItem('darkMode') === 'true') {
+            const page = document.getElementById('page');
+            if (page) page.classList.add('darkmode');
+        }
+    </script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> <!-- for VUE -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> <!-- for axios -->
+    <script src="/javascripts/chats.js"></script>
+
+</body>
+</html>

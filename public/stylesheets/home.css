@@ -1,0 +1,389 @@
+/* displays if no users to reccomend */
+
+#else {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 81.3vh;
+}
+
+#else h2 {
+    font-size: 3em;
+    color: white;
+    text-shadow: 0.02em 0.02em 0.02em #CB748E;
+}
+
+/* dark mode */
+#else h2.darkmode {
+    text-shadow: 0.02em 0.02em 0.02em #2d4839;
+}
+
+#update-prefs {
+    padding: 1em;
+    background-color: rgba(214, 152, 171, 0.7);
+    border-radius: 5px;
+    box-shadow: 0 0 0.2em #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* dark mode */
+#update-prefs.darkmode {
+    background-color: rgba(66, 110, 85, 0.7);
+}
+
+#update-prefs:hover {
+    background-color: #D698AB;
+}
+
+/* dark mode */
+#update-prefs.darkmode:hover {
+    background-color: #426e55;
+}
+
+#update-prefs h3 {
+    font-size: 2em;
+    color: white;
+}
+
+#content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    position: relative;
+    flex-wrap: wrap;
+    gap: 2em;
+    margin-top: -0.5em;
+}
+
+/* displays recommended user */
+
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    z-index: 10;
+}
+
+#left-arrow {
+    left: 3.125em;
+}
+
+#left-arrow i.fa-xmark {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    font-size: 8rem;
+    color: #D698AB;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+
+/* dark mode */
+#left-arrow i.fa-xmark.darkmode {
+    color: #426e55;
+}
+
+#left-arrow i.fa-arrow-left {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    font-size: 6rem;
+    color: white;
+    transition: opacity 0.4s ease;
+}
+
+#left-arrow:hover i.fa-arrow-left {
+    opacity: 0;
+}
+
+#left-arrow:hover i.fa-xmark {
+    opacity: 1;
+}
+
+#right-arrow {
+    right: 3.125em;
+}
+
+#right-arrow i.fa-heart {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    font-size: 6.5rem;
+    color:#CB748E;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+
+/* dark mode */
+#right-arrow i.fa-heart.darkmode {
+    color:#2d4839;
+}
+
+#right-arrow i.fa-arrow-right {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    font-size: 6rem;
+    color: white;
+    transition: opacity 0.4s ease;
+}
+
+#right-arrow:hover i.fa-arrow-right {
+    opacity: 0;
+}
+
+#right-arrow:hover i.fa-heart {
+    opacity: 1;
+}
+
+#user-profile {
+    display: flex;
+    flex-direction: column;
+    /*padding-right: 3.125em;*/
+    padding-right: clamp(1em, 3vw, 3.125em);
+}
+
+#user-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    background-color: #D698AB;
+    border-radius: 0.3125em;
+    padding-left: 0.3125em;
+    padding-right: 0.3125em;
+    padding-top: 0.125em;
+    margin-bottom: 0.5em;
+    color: white;
+}
+
+/* dark mode */
+#user-info.darkmode {
+    background-color: #426e55;
+}
+
+#nickname {
+    font-size: 2em;
+    padding: 0;
+}
+
+#user-details {
+    display: flex;
+    flex-direction: row;
+}
+
+#age {
+    font-size: 1.2em;
+}
+
+#address {
+    font-size: 1em;
+}
+
+#user-details h4 {
+    padding: 0.3125em;
+}
+
+#profile-pictures {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+#user_picture {
+    width: auto;
+    height: 65vh;
+    object-fit: cover;
+    aspect-ratio: 3 / 4;
+    border-radius: 0.3125em;
+    box-shadow: 0 0 0.9375em #fff;
+}
+
+#image_number {
+    position: absolute;
+    bottom: 0px;
+    left:0;
+    border-top-right-radius: 0.3125em;
+    border-bottom-left-radius: 0.3125em;
+    background-color: #D698AB;
+    color: white;
+    padding: 0.25em 0.375em;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+/* dark mode */
+#image_number.darkmode {
+    background-color: #426e55;
+}
+
+#profile-pictures:hover #image_number {
+    background-color: #CB748E;
+}
+
+/* dark mode */
+#profile-pictures.darkmode:hover #image_number.darkmode {
+    background-color: #2d4839;
+}
+
+#user-spotify {
+    display: flex;
+    flex-direction: column;
+    padding-left: clamp(1em, 3vw, 3.125em);
+    margin-bottom: 0.5em;
+    margin-top: 0;
+}
+
+#top-artists {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 0.3125em;
+    padding-top: 3.125em;
+}
+
+.podium {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #D698AB;
+    margin: 0.1875em;
+    width: 5.625em;
+    border-top-right-radius: 0.3125em;
+    border-top-left-radius: 0.3125em;
+
+    position: relative;
+    justify-content: flex-end;
+}
+
+/* dark mode */
+.podium.darkmode {
+    background-color: #426e55;
+}
+
+.image_wrap {
+    position: absolute;
+    top: -4.375em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.first {
+    height: 12.5em;
+}
+
+.second {
+    height: 9em;
+}
+
+.third {
+    height: 6em;
+}
+
+.top_artist_image {
+    width: 5em;
+    height: 5em;
+    border-radius: 50%;
+    box-shadow: 0 0 0.9375em #fff;
+    object-fit: cover;
+    transition: width 0.5s ease, height 0.5s ease;
+    color: white;
+}
+
+.podium:hover .top_artist_image {
+    width: 6.25em;
+    height: 6.25em;
+}
+
+.position {
+    font-size: 2em;
+    color: white;
+    margin-top: 0px;
+}
+
+.artist {
+    font-size: 1.5em;
+    color: white;
+    margin-bottom: 0;
+    margin-left: 0.2em;
+}
+
+#top-tracks {
+    display: flex;
+    flex-direction: column;
+    padding-top: 1.875em;
+    margin-bottom: 0;
+}
+
+#top-tracks-header {
+    font-size: 1.7em;
+    background-color: #D698AB;
+    color: white;
+    border-radius: 0.3125em;
+    margin-bottom: 0.125em;
+    padding-left: 0.625em;
+    padding-top: 0.3125em;
+}
+
+/* dark mode */
+#top-tracks-header.darkmode {
+    background-color: #426e55;
+}
+
+#tracks_table {
+    display: flex;
+    flex-direction: column;
+}
+
+.track {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: baseline;
+    border-bottom: white 0.1em solid;
+}
+
+.album_cover_img {
+    width: 2.5em;
+    height: 2.5em;
+    border-radius: 0.3125em;
+    box-shadow: 0 0 0.9375em #fff;
+    margin-top: 0.3125em;
+    margin-bottom: 0.3125em;
+}
+
+.track_name {
+    font-size: 1.3em;
+    padding: 0px 0.3125em;
+    color: #CB748E;
+    text-shadow: 0.125em 0.125em 0.125em white;
+    margin-right: 0.3125em;
+}
+
+/* dark mode */
+.track_name.darkmode {
+    color: #2d4839;
+}
+
+.track_artist {
+    font-size: 1.1em;
+    color: #CB748E;
+}
+
+/* dark mode */
+.track_artist.darkmode {
+    color: #2d4839;
+}

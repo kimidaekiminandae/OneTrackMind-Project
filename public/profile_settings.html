@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/profile_settings.css">
+    <script src="https://kit.fontawesome.com/aaf816bed9.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zain:ital,wght@0,200;0,300;0,400;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
+    <title>Profile Settings</title>
+</head>
+<body>
+
+    <div id="page">
+
+        <div id="top-nav">
+            <div id="logo">
+                <img src="/images/logo.png" alt="One Track Mind Logo">
+                <h2 class="zain-bold">One Track Mind</h2>
+            </div>
+            <div id="about">
+                <h2 class="zain-bold">About</h2>
+            </div>
+        </div>
+
+        <div id="content">
+            <div id="edit_profile">
+                <h2 class="zain-bold">Edit Profile</h2>
+                <div id="edit_container">
+                    <div id="edit_nickname">
+                        <label for="nickname" class="zain-bold">Nickname:</label>
+                        <input type="text" id="nickname" class="zain-regular" value="My nickname">
+                    </div>
+                    <div id="edit_age">
+                        <label for="age" class="zain-bold">Age:</label>
+                        <input type="number" id="age" value="21" min="0" class="zain-regular">
+                    </div>
+                    <div id="edit_state_suburb">
+                        <label for="searchTextField" class="zain-bold">State & Suburb:</label>
+                        <input class="zain-regular" id="searchTextField" type="text" size="50" placeholder="Start typing your suburb..." autocomplete="on" runat="server" />
+                        <input type="hidden" id="city2" name="city2" />
+                        <input type="hidden" id="cityLat" name="cityLat" />
+                        <input type="hidden" id="cityLng" name="cityLng" />
+                    </div>
+                    <div id="edit_pictures">
+                        <h4 class="zain-bold">Your Pictures:</h4>
+                        <div id="pictures">
+                            <div class="image">
+                                <img src="/images/user_image_1.jpg" alt="Your Image">
+                                <i class="fa-solid fa-xmark"></i>
+                            </div>
+                            <div class="image">
+                                <img src="/images/user_image_2.jpg" alt="Your Image">
+                                <i class="fa-solid fa-xmark"></i>
+                            </div>
+                            <div class="add_image">
+                                <p class="zain-regular-italic">Add picture?</p>
+                                <i class="fa-solid fa-folder-plus"></i>
+                            </div>
+                            <div class="add_image">
+                                <p class="zain-regular-italic">Add picture?</p>
+                                <i class="fa-solid fa-folder-plus"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="change_preferences">
+                <h2 class="zain-bold">Change Preferences</h2>
+                <div id="preferences_container">
+                    <div id="match_preferences">
+                        <label class="zain-bold" for="match">Match based on:</label>
+                        <select id="match" class="zain-regular">
+                            <option value="artists" class="zain-regular" selected>Top Artists</option>
+                            <option value="tracks" class="zain-regular">Top Tracks</option>
+                        </select>
+                    </div>
+                    <div id="distance_preference">
+                        <label class="zain-bold" for="distance">How far will you go?</label>
+                        <input type="number" id="distance">
+                        <h4 class="zain-regular">kilometres</h4>
+                    </div>
+                    <div id="age_preference">
+                        <h3 class="zain-bold">Age range:</h3>
+                        <input type="number" id="min_age" placeholder="Min">
+                        <h4 class="zain-regular">to</h4>
+                        <input type="number" id="max_age" placeholder="Max">
+                    </div>
+                </div>
+                <div id="buttons">
+                    <h3 class="zain-bold" id="save">Save Changes</h3>
+                    <h3 class="zain-bold" id="log_out">Log Out</h3>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="bottom-nav">
+            <div id="chat" class="nav-tab">
+                <h2 class="zain-bold">Chat</h2>
+                <i class="fa-solid fa-comment"></i>
+            </div>
+            <div id="home" class="nav-tab">
+                <h2 class="zain-bold">Home</h2>
+                <i class="fa-solid fa-house"></i>
+            </div>
+            <div id="profile" class="nav-tab">
+                <h2 class="zain-bold">Profile</h2>
+                <i class="fa-solid fa-user"></i>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="/javascripts/all_pages.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDA7wQpmt-7njI77DLokayrmzUNCDJvsYo&libraries=places&loading=async" defer></script>
+    <script src="/javascripts/profile_settings.js"></script>
+</body>
+</html>

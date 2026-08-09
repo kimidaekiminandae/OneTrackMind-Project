@@ -1,0 +1,56 @@
+/*
+javascript that applies to all pages of site
+this should include js required for onclick events for nav bars to redirect to other pages
+written and used for static html, prior to Vue implementation
+*/
+
+/* colour change in bottom nav bar */
+const navTabs = document.querySelectorAll('.nav-tab'); // get nav tabs: chat, home, & profile
+const currentPage = window.location.pathname; // get current page xxx.html
+
+const tabMappings = { // html pages associated with each tab
+    home: ['home', 'index', 'about'], // i.e. show home tab as active on these pages
+    chat: ['chats', 'active_chat', 'chat_settings', 'new_match'],
+    profile: ['profile', 'profile_settings']
+};
+
+function setNavTabColour(tab){
+    const tabId = tab.id.toLowerCase();
+    const keywords = tabMappings[tabId];
+
+    // check if the current page includes any of the keywords for this tab
+    const isActive = keywords && keywords.some((keyword) => currentPage.includes(keyword));
+
+    if (isActive) {
+        tab.classList.add('active'); // highlight this (active) tab
+      } else {
+        tab.classList.remove('active');
+    }
+}
+
+navTabs.forEach(setNavTabColour);
+
+/* bottom nav bar page redirect */
+document.getElementById('chat').addEventListener('click', () => {
+    window.location.href = 'chats.html';
+});
+
+document.getElementById('home').addEventListener('click', () => {
+    window.location.href = 'home.html';
+});
+
+document.getElementById('profile').addEventListener('click', () => {
+    window.location.href = 'profile.html';
+});
+
+/* top nav bar redirect to home page */
+/*
+document.getElementById('logo').addEventListener('click', () => {
+    window.location.href = 'home.html';
+});
+
+document.getElementById('about').addEventListener('click', () => {
+    window.location.href = 'about.html';
+});
+*/
+

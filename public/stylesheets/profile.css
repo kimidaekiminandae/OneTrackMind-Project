@@ -1,0 +1,257 @@
+#content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    position: relative;
+    flex-wrap: wrap;
+    gap: 2em;
+}
+
+#user-profile {
+    display: flex;
+    flex-direction: column;
+    padding-right: clamp(1em, 3vw, 3.125em);
+}
+
+#user-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    border-radius: 0.3125em;
+    padding-top: 0.125em;
+    margin-bottom: 0.0625em;
+    color: white;
+}
+
+#nickname {
+    font-size: 2.5em;
+    color:#CB748E;
+}
+
+/* dark mode */
+#nickname.darkmode {
+    color:#2d4839;
+}
+
+#settings {
+    font-size: 2em;
+    color: #D698AB;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+/* dark mode */
+#settings.darkmode {
+    color: #426e55;
+}
+
+#settings:hover {
+    color:#CB748E;
+}
+
+/* dark mode */
+#settings.darkmode:hover{
+    color:#2d4839;
+}
+
+#profile-pictures {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+#user_picture {
+    width: auto;
+    height: 65vh;
+    object-fit: cover;
+    aspect-ratio: 3 / 4;
+    border-radius: 0.3125em;
+    box-shadow: 0 0 0.9375em #fff;
+}
+
+#image_number {
+    position: absolute;
+    bottom: 0;
+    left:0;
+    border-top-right-radius: 0.3125em;
+    border-bottom-left-radius: 0.3125em;
+    background-color: #D698AB;
+    color: white;
+    padding: 0.25em 0.375em;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+/* dark mode */
+#image_number.darkmode {
+    background-color: #426e55;
+}
+
+#profile-pictures:hover #image_number {
+    background-color: #CB748E;
+}
+
+/* dark mode */
+#profile-pictures.darkmode:hover #image_number.darkmode {
+    background-color: #2d4839;
+}
+
+#user-spotify {
+    display: flex;
+    flex-direction: column;
+    padding-left: clamp(1em, 3vw, 3.125em); /* responsive */
+    margin-bottom: 1em;
+    margin-top: -1em;
+}
+
+#top-artists {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 0.3125em;
+    padding-top: 3.125em;
+    gap: 0.8em;
+}
+
+.podium {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #D698AB;
+    margin: 0.1875em;
+    width: 5.625em;
+    border-top-right-radius: 0.3125em;
+    border-top-left-radius: 0.3125em;
+
+    position: relative;
+    justify-content: flex-end;
+}
+
+/* dark mode */
+.podium.darkmode {
+    background-color: #426e55;
+}
+
+.image_wrap {
+    position: absolute;
+    top: 0;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+
+.first {
+    height: 12.5em;
+}
+
+.second {
+    height: 9em;
+}
+
+.third {
+    height: 6em;
+}
+
+.top_artist_image {
+    width: 5em;
+    height: 5em;
+    border-radius: 50%;
+    border: white solid 0.0625em;
+    object-fit: cover;
+    transition: width 0.5s ease, height 0.5s ease;
+}
+
+.podium:hover .top_artist_image {
+    width: 6.25em;
+    height: 6.25em;
+}
+
+.position {
+    font-size: 2em;
+    color: white;
+    margin-top: 0;
+}
+
+.artist {
+    font-size: 1.5em;
+    color: white;
+    margin-bottom: 0;
+    margin-left: 0.2em;
+}
+
+#top-tracks {
+    display: flex;
+    flex-direction: column;
+    padding-top: 1.875em;
+    margin-top: -0.5em;
+}
+
+#top-tracks-header {
+    font-size: 1.7em;
+    background-color: #D698AB;
+    color: white;
+    border-radius: 0.3125em;
+    margin-bottom: 0.125em;
+    padding-left: 0.625em;
+    padding-top: 0.3125em;
+}
+
+/* dark mode */
+#top-tracks-header.darkmode {
+    background-color: #426e55;
+}
+
+#tracks_table {
+    display: flex;
+    flex-direction: column;
+}
+
+.track {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: baseline;
+    border-bottom: white 0.0625em solid;
+}
+
+.album_cover_img {
+    width: 2.5em;
+    height: 2.5em;
+    border-radius: 0.3125em;
+    border: white solid 0.0625em;
+    margin-top: 0.3125em;
+    margin-bottom: 0.3125em;
+}
+
+.track_name {
+    font-size: 1.3em;
+    padding: 0.125em;
+    color: #CB748E;
+    text-shadow: 0.125em 0.125em 0.25em white;
+    margin-right: 0.3125em;
+}
+
+/* dark mode */
+.track_name.darkmode {
+    color: #2d4839;
+}
+
+.track_artist {
+    font-size: 1.1em;
+    color: #CB748E;
+}
+
+/* dark mode */
+.track_artist.darkmode {
+    color: #2d4839;
+}
+
+
+
+

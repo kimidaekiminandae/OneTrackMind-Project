@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/active_chat.css">
+    <script src="https://kit.fontawesome.com/aaf816bed9.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zain:ital,wght@0,200;0,300;0,400;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
+    <title>Active Chat</title>
+</head>
+<body>
+    <div id="page">
+
+        <header id="top-nav" role="banner" aria-label="Main navigation" :class="{ darkmode: isDarkMode }"> <!-- applied to all pages -->
+            <div id="logo" @click="redirect('home')">
+                <img src="/images/logo.png" alt="One Track Mind Logo">
+                <h1 class="zain-bold">One Track Mind</h1>
+            </div>
+            <nav id="about" @click="redirect('about')" aria-label="About Page Link">
+                <h2 class="zain-bold">About</h2>
+            </nav>
+        </header>
+
+        <main id="content">
+
+            <header id="chat_header" :class="{ darkmode: isDarkMode }" role="banner" aria-label="Chat header">
+                <img :src="profile_picture" alt="Match's Profile Picture" id="active_match_profile_img">
+                <h2 class="zain-bold">{{ nickname }}</h2>
+                <i class="fa-solid fa-bars" id="chat_settings" @click="redirect('chat_settings')" aria-hidden="true" role="button" tabindex="0" aria-label="Open chat settings"></i>
+            </header>
+
+            <section aria-label="Chat messages" id="chat_messages"> <!-- add class user if id matches primary user id, else add class match-->
+                <article class="message" v-for="(message, index) in chat_messages" :key="index"
+                :class="{
+                    user: message.sender === primary_user_id,
+                    match: message.sender === active_match_user_id,
+                    darkmode: isDarkMode
+                  }"
+                  role="group"
+                  :aria-label="message.sender === primary_user_id ? 'Your message' : 'Match message'"
+                >
+                    <p class="message_timestamp zain-regular" :class="{ darkmode: isDarkMode }">{{ message.message_timestamp }}</p>
+                    <p class="message_text zain-light">{{ message.text }}</p>
+                </article>
+                <div ref="bottom"></div> <!--for scroll to bottom-->
+            </section>
+
+            <form id="chat_text_box" @submit.prevent="send" aria-label="Message input">
+                <input type="text" id="input" :class="{ darkmode: isDarkMode }" placeholder="Your message goes here..." class="zain-light-italic" v-model="message_text" aria-label="Type your message" autocomplete="off">
+                <button type="submit" name="send" aria-label="Send message" :class="{ darkmode: isDarkMode }"><i class="fa-solid fa-paper-plane" aria-hidden="true"></i></button>
+            </form>
+
+        </main>
+
+        <nav id="bottom-nav" role="navigation" aria-label="Bottom navigation" :class="{ darkmode: isDarkMode }"> <!-- apply to all pages -->
+            <div id="chat" class="nav-tab" :class="{ active: isActive('chat'), darkmode: isDarkMode }" @click="redirect('chats')" role="link" tabindex="0" aria-label="Go to Chat">
+                <h2 class="zain-bold">Chat</h2>
+                <i class="fa-solid fa-comment" aria-hidden="true"></i>
+            </div>
+            <div id="home" class="nav-tab" :class="{ active: isActive('home'), darkmode: isDarkMode }" @click="redirect('home')" role="link" tabindex="0" aria-label="Go to Home">
+                <h2 class="zain-bold">Home</h2>
+                <i class="fa-solid fa-house" aria-hidden="true"></i>
+            </div>
+            <div id="profile" class="nav-tab" :class="{ active: isActive('profile'), darkmode: isDarkMode }" @click="redirect('profile')" role="link" tabindex="0" aria-label="Go to Profile">
+                <h2 class="zain-bold">Profile</h2>
+                <i class="fa-solid fa-user" aria-hidden="true"></i>
+            </div>
+        </nav>
+    </div>
+
+    <script>
+        if (localStorage.getItem('darkMode') === 'true') {
+            const page = document.getElementById('page');
+            if (page) page.classList.add('darkmode');
+        }
+    </script>
+    <script src="/socket.io/socket.io.js"></script> <!-- for socket.io live chats -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> <!-- for VUE -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> <!-- for axios -->
+    <script src="/javascripts/active_chat.js"></script>
+</body>
+</html>

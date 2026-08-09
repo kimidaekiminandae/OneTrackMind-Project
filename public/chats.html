@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/chats.css">
+    <script src="https://kit.fontawesome.com/aaf816bed9.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zain:ital,wght@0,200;0,300;0,400;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
+    <title>Chats</title>
+</head>
+<body>
+
+    <div id="page">
+
+        <div id="top-nav">
+            <div id="logo">
+                <img src="/images/logo.png" alt="One Track Mind Logo">
+                <h2 class="zain-bold">One Track Mind</h2>
+            </div>
+            <div id="about">
+                <h2 class="zain-bold">About</h2>
+            </div>
+        </div>
+
+        <div id="content">
+            <div id="active">
+                <h3 id="active_chat_header" class="zain-bold">On your mind...</h3>
+                <div class="active_chat" id="active_chat_ID">
+                    <img src="/images/active_match_profile.jpg" alt="Match's Profile Picture" id="active_match_profile_img">
+                    <div id="active_chat_info">
+                        <div id="active_chat_details">
+                            <div id="user_details">
+                                <h3 class="zain-bold nickname">Nickname</h3>
+                                <h4 class="zain-regular" id="top_artist">Top Artist: ...</h4>
+                                <h4 class="zain-regular" id="top_track">Top Track: ...</h4>
+                            </div>
+                            <div id="chat_badges">
+                                <!-- add chat badges? -->
+                            </div>
+                        </div>
+                        <div id="latest_message">
+                            <h4 id="recent_message_preview" class="zain-regular-italic message_preview">"Most recent message.............."</h4>
+                            <h3 class="zain-regular timestamp" id="last_active_message_timestamp">11:11pm 21st April 2025</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="archive">
+                <h3 id="archived_chats_header" class="zain-bold">No replays...</h3>
+                <div id="archived_chats">
+                    <div class="archived_chat" id="archived_chat_ID1">
+                        <img src="/images/archived_match_profile.jpg" alt="Archived Match's Profile Picture" class="archived_chat_profile_img">
+                        <div class="chatlog_container">
+                            <h3 class="zain-bold nickname">Nickname</h3>
+                            <h4 class="zain-light-italic archived_last_message">"Last message..."</h4>
+                        </div>
+                        <h3 class="zain-regular archived_timestamp">4:20am 20th April 2025</h3>
+                    </div>
+                    <div class="archived_chat" id="archived_chat_ID2">
+                        <img src="/images/archived_match_profile.jpg" alt="Archived Match's Profile Picture" class="archived_chat_profile_img">
+                        <div class="chatlog_container">
+                            <h3 class="zain-bold nickname">Nickname</h3>
+                            <h4 class="zain-light-italic archived_last_message">"Last message..."</h4>
+                        </div>
+                        <h3 class="zain-regular archived_timestamp">4:20am 20th April 2025</h3>
+                    </div>
+                    <div class="archived_chat" id="archived_chat_ID3">
+                        <img src="/images/archived_match_profile.jpg" alt="Archived Match's Profile Picture" class="archived_chat_profile_img">
+                        <div class="chatlog_container">
+                            <h3 class="zain-bold nickname">Nickname</h3>
+                            <h4 class="zain-light-italic archived_last_message">"Last message..."</h4>
+                        </div>
+                        <h3 class="zain-regular archived_timestamp">4:20am 20th April 2025</h3>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="bottom-nav">
+            <div id="chat" class="nav-tab">
+                <h2 class="zain-bold">Chat</h2>
+                <i class="fa-solid fa-comment"></i>
+            </div>
+            <div id="home" class="nav-tab">
+                <h2 class="zain-bold">Home</h2>
+                <i class="fa-solid fa-house"></i>
+            </div>
+            <div id="profile" class="nav-tab">
+                <h2 class="zain-bold">Profile</h2>
+                <i class="fa-solid fa-user"></i>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="/javascripts/all_pages.js"></script>
+    <script src="/javascripts/chats.js"></script>
+
+</body>
+</html>

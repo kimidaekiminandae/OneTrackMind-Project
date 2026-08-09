@@ -1,0 +1,373 @@
+#content {
+    display: flex;
+    flex-direction: column;
+    max-width: 50em;
+    height: auto;
+    box-shadow: 0 0 1.25em white;
+    align-self: center;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 1.25em;
+    margin-top: -0.8em;
+    background-color: rgba(214, 152, 171, 0.302);
+    border-radius: 0.625em;
+    padding-bottom: 0.5em;
+}
+
+/* darkmode */
+#content.darkmode {
+    background-color: rgba(66, 110, 85, 0.302);
+}
+
+#content h2 {
+    font-size: 2.8em;
+    color: white;
+    text-shadow: 0.0625em 0.0625em 0.0625em #CB748E;
+    padding-bottom: 0.3125em;
+}
+
+/* darkmode */
+#content h2.darkmode {
+    text-shadow: 0.0625em 0.0625em 0.0625em #2d4839;
+}
+
+#match_info {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: 50em;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.2em;
+    margin-top: -0.8em;
+}
+
+#match_details {
+    display: flex;
+    flex-direction: column;
+    border-radius: 0.3125em;
+    color: white;
+    margin-left: 2em;
+    padding-bottom: 2em;
+    align-self: flex-start;
+}
+
+#user-info {
+    display: flex;
+    flex-direction: row;
+    background-color: #D698AB;
+    border-radius: 0.3125em;
+    padding-left: 0.3125em;
+    padding-right: 0.3125em;
+    padding-top: 0.125em;
+    margin-bottom: 0.5em;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+/* darkmode */
+#user-info.darkmode {
+    background-color: #426e55;
+}
+
+#nickname {
+    font-size: 1.8em;
+    padding: 0;
+}
+
+#user-details {
+    display: flex;
+    flex-direction: row;
+    font-size: 0.8em;
+    align-self: flex-end;
+}
+
+#user-details h4 {
+    padding: 0.3125em;
+    font-size: 0.9em;
+}
+
+#profile-pictures {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 0 0.9375em #fff;
+}
+
+#user_picture {
+    width: auto;
+    height: 17.5em;
+    object-fit: cover;
+    border-radius: 0.3125em;
+}
+
+#image_number {
+    position: absolute;
+    bottom: 0;
+    left:0;
+    border-top-right-radius: 0.3125em;
+    border-bottom-left-radius: 0.3125em;
+    background-color: #D698AB;
+    color: white;
+    padding: 0.1875em 0.375em;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+/* darkmode */
+#image_number.darkmode {
+    background-color: #426e55;
+}
+
+#profile-pictures:hover #image_number {
+    background-color: #CB748E;
+}
+
+/* darkmode */
+#profile-pictures.darkmode:hover #image_number.darkmode {
+    background-color: #2d4839;
+}
+
+#spotify_stats {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: first baseline;
+    margin: 0.5em 2em;
+}
+
+#top-artists {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: center;
+    margin-top: 1.25em;
+}
+
+.podium {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #D698AB;
+    margin: 0.125em;
+    width: 3.625em;
+    border-top-right-radius: 0.3125em;
+    border-top-left-radius: 0.3125em;
+
+    position: relative;
+    justify-content: flex-end;
+}
+
+/* darkmode */
+.podium.darkmode {
+    background-color: #426e55;
+}
+
+.image_wrap {
+    position: absolute;
+    top: -1.875em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.first {
+    height: 9.375em;
+}
+
+.second {
+    height: 6.25em;
+}
+
+.third {
+    height: 3.125em;
+}
+
+.top_artist_image {
+    width: 2.5em;
+    height: 2.5em;
+    border-radius: 50%;
+    box-shadow: 0 0 0.625em #fff;
+    object-fit: cover;
+    transition: width 0.5s ease, height 0.5s ease;
+    color: white;
+}
+
+.podium:hover .top_artist_image {
+    width: 3.75em;
+    height: 3.75em;
+}
+
+.position {
+    font-size: 1.2em;
+    color: white;
+    margin-top: 0;
+}
+
+.artist {
+    font-size: 1em;
+    color: white;
+    margin-bottom: 0;
+}
+
+#top-tracks {
+    display: flex;
+    flex-direction: column;
+    padding-top: 0.625em;
+    width: 11.875em;
+    margin: auto 0 auto 0;
+}
+
+#top-tracks-header {
+    font-size: 1.3em;
+    background-color: #D698AB;
+    color: white;
+    border-radius: 0.3125em;
+    margin-bottom: 0.125em;
+    padding-left: 0.625em;
+    padding-top: 0.3125em;
+    margin: 0.125em;
+}
+
+/* darkmode */
+#top-tracks-header.darkmode {
+    background-color: #426e55;
+}
+
+#tracks_table {
+    display: flex;
+    flex-direction: column;
+}
+
+.track {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: baseline;
+    background-color: rgba(255, 255, 255, 0.3);
+    margin: 0.125em;
+    padding: 0px 0.1875em;
+    border-radius: 0.3125em;
+    max-height: 2.5em;
+}
+
+.album_cover_img {
+    width: 1.875em;
+    height: 1.875em;
+    border-radius: 0.3125em;
+    box-shadow: 0 0 0.3125em #fff;
+    margin-top: 0.1875em;
+}
+
+.track_name {
+    font-size: 1em;
+    padding: 0px 0.125em 0.25em 0.3125em;
+    color: #CB748E;
+    text-shadow: 0.0625em 0.0625em 0.0625em white;
+    margin-right: 0.3125em;
+}
+
+/* darkmode */
+.track_name.darkmode {
+    color: #2d4839;
+}
+
+.track_artist {
+    font-size: 0.8em;
+    color: #CB748E;
+}
+
+/* darkmode */
+.track_artist.darkmode {
+    color: #2d4839;
+}
+
+#buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1.875em;
+    color: white;
+    margin-bottom: 0.3125em;
+    width: 100%;
+    padding: 0 2em;
+}
+
+#unmatch_button {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    cursor: pointer;
+    max-width: 15.625em;
+    border-radius: 0.3125em;
+    background-color: #D698AB;
+    box-shadow: 0 0 0.625em #fff;
+    transition: background-color 0.3s ease;
+    padding: 0.3125em 0.5em 0px 0.5em;
+    gap: 0.3125em;
+    margin-top: 0.3125em;
+}
+
+/* darkmode */
+#unmatch_button.darkmode {
+    background-color: #426e55;
+}
+
+#unmatch_button:hover {
+    background-color: #CB748E;
+}
+
+/* darkmode */
+#unmatch_button.darkmode:hover {
+    background-color: #2d4839;
+}
+
+#unmatch_button p {
+    font-size: 1.3em;
+}
+
+#unmatch_button i {
+    font-size: 1.5em;
+}
+
+#match_button {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    cursor: pointer;
+    max-width: 18.75em;
+    border-radius: 0.3125em;
+    background-color: #D698AB;
+    box-shadow: 0 0 0.625em #fff;
+    transition: background-color 0.3s ease;
+    padding: 0.3125em 0.5em 0px 0.5em;
+    gap: 0.3125em;
+    margin-top: 0;
+}
+
+/* darkmode */
+#match_button.darkmode {
+    background-color: #426e55;
+}
+
+#match_button:hover {
+    background-color: #CB748E;
+}
+
+/* darkmode */
+#match_button.darkmode:hover {
+    background-color: #2d4839;
+}
+
+#match_button p {
+    font-size: 2em;
+}
+
+#match_button i {
+    font-size: 2em;
+}
+

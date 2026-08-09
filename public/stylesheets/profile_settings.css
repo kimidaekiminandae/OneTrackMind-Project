@@ -1,0 +1,405 @@
+#content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 3em;
+    width: fit-content;
+    align-self: center;
+    padding-top: 1.875em;
+    flex-wrap: wrap; /* allow stacking on small screens */
+}
+
+#edit_profile {
+    display: flex;
+    flex-direction: column;
+    border-radius: 0.625em;
+    width: 25em;
+    max-height: 28em;
+    box-shadow: 0 0 0.9em white;
+}
+
+#edit_profile h2{
+    font-size: 2.5em;
+    color: white;
+    text-shadow: 0.0625em 0.0625em 0.0625em #cb748e;
+    background-color: #d698ab;
+    margin-bottom: 0.5em;
+    padding-left: 0.4em;
+    padding-top: 0.1em;
+    border-radius: 0.2em;
+}
+
+/* dark mode */
+#edit_profile h2.darkmode{
+    text-shadow: 0.0625em 0.0625em 0.0625em #2d4839;
+    background-color: #426e55;
+}
+
+#edit_container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25em;
+    height: 25em;
+    padding: 0.3125em 1.25em;
+}
+
+#edit_nickname, #edit_age, #edit_sex, #edit_state_suburb {
+    display: flex;
+    flex-direction: row;
+    gap: 0.625em;
+    font-size: 1.5em;
+    justify-content: flex-start;
+    align-items: baseline;
+    color: #cb748e;
+    text-shadow: 0.0625em 0.0625em 0.0625em white;
+}
+
+/* dark mode */
+#edit_nickname.darkmode, #edit_age.darkmode, #edit_sex.darkmode, #edit_state_suburb.darkmode {
+    color: #2d4839;
+}
+
+#edit_sex select {
+    padding: 0px 0.3125em;
+    border: 0.0625em solid white;
+    border-radius: 0.25em;
+    font-size: 0.8em;
+    width: 6em;
+    color: #cb748e;
+}
+
+/* dark mode */
+#edit_sex select.darkmode {
+    color: #2d4839;
+}
+
+input#nickname {
+    padding: 0px 0.3125em;
+    border: 0.0625em solid white;
+    border-radius: 0.25em;
+    font-size: 1em;
+    width: 10em;
+    color: #cb748e;
+}
+
+/* dark mode */
+input#nickname.darkmode {
+    color: #2d4839;
+}
+
+input[type="number"] {
+    padding: 0 0.3125em;
+    border: 0.0625em solid white;
+    border-radius: 0.25em;
+    font-size: 1em;
+    width: 4em;
+    color: #cb748e;
+}
+
+/* dark mode */
+input[type="number"].darkmode {
+    color: #2d4839;
+}
+
+input#searchTextField {
+    padding: 0 0.3125em;
+    border: 1px solid white;
+    border-radius: 0.25em;
+    font-size: 0.8em;
+    width: 10.5em;
+    color: #cb748e;
+}
+
+/* dark mode */
+input#searchTextField.darkmode {
+    color: #2d4839;
+}
+
+#edit_pictures{
+    display: flex;
+    flex-direction: column;
+    gap: 0.625em;
+}
+
+#edit_pictures h4 {
+    color: #cb748e;
+    text-shadow: 0.0625em 0.0625em 0.0625em white;
+    font-size: 1.5em;
+}
+
+/* dark mode */
+#edit_pictures h4.darkmode {
+    color: #2d4839;
+}
+
+#pictures {
+    display: flex;
+    flex-direction: row;
+    gap: 0.625em;
+}
+
+.image {
+    position: relative;
+    width: 5em;
+    height: 5em;
+    box-shadow: 0 0 0.3125em white;
+    overflow: hidden;
+    color: white;
+}
+
+.image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.image i {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: white;
+    padding: 0.25em;
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+.add_image {
+    width: 5em;
+    height: 5em;
+    border: 0.0625em dashed #cb748e;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.25em;
+    cursor: pointer;
+    text-align: center;
+    padding: 0.25em;
+}
+
+/* dark mode */
+.add_image.darkmode {
+    border: 0.0625em dashed #2d4839;
+}
+
+.add_image p {
+    font-size: 1em;
+    margin: 0;
+    color: #cb748e;
+}
+
+/* dark mode */
+.add_image p.darkmode {
+    color: #2d4839;
+}
+
+.add_image i {
+    font-size: 1.2em;
+    margin: 0;
+    color: #cb748e;
+}
+
+/* dark mode */
+.add_image i.darkmode {
+    color: #2d4839;
+}
+
+#change_preferences {
+    display: flex;
+    flex-direction: column;
+    border-radius: 0.625em;
+    width: 25em;
+    box-shadow: 0 0 0.9em white;
+    height: 25em;
+    margin-bottom: 2em;
+}
+
+#change_preferences h2 {
+    font-size: 2.5em;
+    color: white;
+    text-shadow: 0.0625em 0.0625em 0.0625em #cb748e;
+    background-color: #d698ab;
+    margin-bottom: 0.5em;
+    padding-left: 0.4em;
+    padding-top: 0.1em;
+    border-radius: 0.2em;
+}
+
+/* dark mode */
+#change_preferences h2.darkmode {
+    text-shadow: 0.0625em 0.0625em 0.0625em #2d4839;
+    background-color: #426e55;
+}
+
+#preferences_container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25em;
+    height: 18em;
+    padding: 0.3125em 1.25em;
+}
+
+#match_preferences, #distance_preference, #age_preference, #sex_preferences {
+    display: flex;
+    flex-direction: row;
+    gap: 0.625em;
+    font-size: 1.5em;
+    justify-content: flex-start;
+    align-items: baseline;
+    color: #cb748e;
+    text-shadow: 0.0625em 0.0625em 0.0625em white;
+}
+
+/* dark mode */
+#match_preferences.darkmode, #distance_preference.darkmode, #age_preference.darkmode, #sex_preferences.darkmode {
+    color: #2d4839;
+}
+
+#match_preferences select, #sex_preferences select {
+    padding: 0px 0.3125em;
+    border: 0.0625em solid white;
+    border-radius: 0.25em;
+    font-size: 0.8em;
+    width: 6em;
+    color: #cb748e;
+}
+
+/* dark mode */
+#match_preferences.darkmode select, #sex_preferences.darkmode select {
+    color: #2d4839;
+}
+
+#distance_preference input,
+#age_preference input {
+    font-size: 0.7em;
+    color: #cb748e;
+}
+
+/* dark mode */
+#distance_preference.darkmode input,
+#age_preference.darkmode input {
+    color: #2d4839;
+}
+
+#age_preference {
+    justify-content: center;
+}
+
+#age_preference h4 {
+    margin: 0 0.625em;
+}
+
+#buttons {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 0.625em;
+}
+
+#darkmodeButton, #save, #log_out {
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 0 0.3em white;
+    background-color: #d698ab;
+    border-radius: 0.3em;
+    transition: background-color 0.3s ease;
+    margin: 0.6em;
+    color: white;
+    align-self: flex-start;
+}
+
+/* dark mode */
+#darkmodeButton.darkmode, #save.darkmode, #log_out.darkmode {
+    background-color: #426e55;
+}
+
+#save:hover, #log_out:hover {
+    background-color: #cb748e;
+}
+
+/* dark mode */
+#save.darkmode:hover, #log_out.darkmode:hover{
+    background-color: #2d4839;
+}
+
+#save {
+    width: 6em;
+    align-self: center;
+    font-size: 1.5em;
+}
+
+#log_out {
+    width: 4em;
+    align-self: center;
+    font-size: 1.2em;
+}
+
+#darkmodeButton {
+    font-size: 1.2em;
+    align-self: center;
+    width: 6em;
+    padding: 0.1em;
+}
+
+#darkmodeButton.switch {
+  position: relative;
+  display: inline-block;
+  height: 3em;
+  width: 4.5em;
+  padding: 0;
+  margin: 0.6em;
+}
+
+#darkmodeButton.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+#darkmodeButton .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0;
+  right: 0; bottom: 0;
+  background-color: #d698ab;
+  transition: 0.4s;
+  border-radius: 2em;
+}
+
+#darkmodeButton .slider::before {
+  content: "";
+  position: absolute;
+  height: 1.4em;
+  width: 1.4em;
+  left: 0.5em;
+  bottom: 0.3em;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+#darkmodeButton input:checked + .slider {
+  background-color: #426e55; /* dark mode */
+}
+
+#darkmodeButton input:checked + .slider::before {
+  transform: translateX(2em);
+}
+
+#darkmodeButton:hover {
+    background-color: #cb748e;
+}
+
+#darkmodeButton .slider:hover {
+    background-color: #cb748e;
+}
+
+/* dark mode */
+#darkmodeButton.darkmode:hover {
+    background-color: #2d4839;
+}
+
+#darkmodeButton.darkmode .slider:hover {
+    background-color: #2d4839;
+}
+
